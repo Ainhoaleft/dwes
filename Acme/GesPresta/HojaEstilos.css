@@ -1,0 +1,55 @@
+﻿body {
+}
+.parrafo {
+    font-family: Arial;
+    padding-top: 20px;
+}
+.container {
+    text-align: center;
+    font-family: Arial;
+}
+
+.tabla {
+    display: table;
+    justify-content: space-between;
+    width:100%; 
+    border: 1px solid gray;  
+}
+
+.fila {
+    display: table-row;
+    text-align: center; 
+}
+
+.titulo {
+    font-size: 30px;
+    padding-top: 20px;
+    border: 1px solid gray;
+}
+
+.subtitulo {
+    border: 1px solid gray;
+}
+
+.tablaForm {
+    display: table;
+    text-align:center;
+    font-family: Arial;
+}
+
+.casilla {
+    display:table-row;
+}
+
+.filaForm {
+    display: table-cell;
+    width: 80%;
+    margin: 5px;
+    text-align:right;
+}
+
+.celda {
+    display: table-cell;
+    text-align: left;
+}
+
