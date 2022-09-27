@@ -11,7 +11,7 @@ namespace GesPresta
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            txtCodPre.Focus(); // Sitúa el foco en el elemento Código Prestación
         }
     }
 }

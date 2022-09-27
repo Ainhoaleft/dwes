@@ -11,7 +11,7 @@ namespace GesPresta
 {
 
 
-    public partial class Empleados
+    public partial class Empleados1
     {
 
         /// <summary>
@@ -130,5 +130,14 @@ namespace GesPresta
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button cmdEnviar;
+
+        /// <summary>
+        /// Control lblValores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblValores;
     }
 }

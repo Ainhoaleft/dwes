@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Empleados.aspx.cs" Inherits="GesPresta.Empleados" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EmpleadosCalendar.aspx.cs" Inherits="GesPresta.EmpleadosCalendar" %>
 
 <%@ Register src="Cabecera.ascx" tagname="Cabecera" tagprefix="uc1" %>
 
@@ -35,7 +35,7 @@
                                 <asp:TextBox ID="txtNomEmp" runat="server"></asp:TextBox>
                             </div>
                    </div>
-                 <div class="casilla"> 
+                  <div class="casilla"> 
                          <div class="filaForm">Direccion</div>
                             <div class="celda">
                                 <asp:TextBox ID="txtDirEmp" runat="server"></asp:TextBox>
@@ -53,18 +53,7 @@
                                 <asp:TextBox ID="txtTelEmp" runat="server"></asp:TextBox>
                             </div>
                     </div>
-                    <div class="casilla"> 
-                        <div class="filaForm">Fecha de Nacimiento</div> 
-                            <div class="celda">
-                                <asp:TextBox ID="txtFnaEmp" runat="server"></asp:TextBox>
-                            </div>
-                    </div>
-                    <div class="casilla"> 
-                        <div class="filaForm">Fecha de Ingreso</div>
-                            <div class="celda">
-                                <asp:TextBox ID="txtFinEmp" runat="server"></asp:TextBox>
-                            </div>
-                    </div>
+                   
                     <div class="casilla"> 
                         <div class="filaForm">Sexo</div>
                             <div class="celda">      
@@ -85,10 +74,57 @@
                             </asp:DropDownList>
                         </div>
                     </div>
-                        <div class="filaForm">  
-                            <asp:Button ID="cmdEnviar" runat="server" Text="Enviar" />  
-                        </div>
+
                 </div>
+                    <div class="casilla"> 
+                        <div class="filaForm">Fecha de Nacimiento</div> 
+                            <div class="celda">
+                                <asp:TextBox ID="txtFnaEmp" runat="server"></asp:TextBox>
+                                    <div class="calendario">
+                                        <asp:Calendar ID="Nacimiento" runat="server" OnSelectionChanged="Nacimiento_SelectionChanged"></asp:Calendar>
+                                     </div>
+                            </div>
+                    </div>
+                       <div class="casilla"> 
+                            <div class="filaForm">Fecha de Ingreso</div>
+                                <div class="celda">
+                                    <asp:TextBox ID="txtFinEmp" runat="server"></asp:TextBox>
+                                </div>
+                                    <div class="calendario">
+                                        <asp:Calendar ID="Ingreso" runat="server" OnSelectionChanged="Ingreso_SelectionChanged"></asp:Calendar>
+                                     </div>
+                        </div>
+                        <div class="casilla"> 
+                            <div class="filaForm">Antiguedad</div>
+                                <div class="celda">
+                                    <asp:TextBox ID="txtAnti" runat="server"></asp:TextBox>
+                                </div>
+                            <div class="filaForm">Años</div>
+                                <div class="celda">
+                                    <asp:TextBox ID="txtAno" runat="server"></asp:TextBox>
+                                </div>
+                            <div class="filaForm">Dias</div>
+                                <div class="celda">
+                                    <asp:TextBox ID="txtDia" runat="server"></asp:TextBox>
+                                </div>
+                                    
+                        </div>
+                        <div class="filaForm">  
+                            <asp:Button ID="cmdEnviar" runat="server" Text="Enviar" OnClick="cmdEnviar_Click" />  
+                        </div> 
+                            <div>
+                            <asp:Label ID="lblError1" runat="server" Text="" Visible="False" Width="60%"></asp:Label>
+                        </div>
+                         <div>
+                            <asp:Label ID="lblError2" runat="server" Text="" Visible="False" Width="60%"></asp:Label>
+                        </div>
+                         <div>
+                            <asp:Label ID="lblError3" runat="server" Text="" Visible="False" Width="60%"></asp:Label>
+                        </div>
+                         <div class="tabla">
+                            <asp:Label ID="lblValores" runat="server" BackColor="#66FFFF" Text="" Visible="False" Width="60%"></asp:Label>
+                        </div>
+                       
     </form>
 </body>
 </html>
