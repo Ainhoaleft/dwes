@@ -79,34 +79,33 @@
                     <div class="casilla"> 
                         <div class="filaForm">Fecha de Nacimiento</div> 
                             <div class="celda">
-                                <asp:TextBox ID="txtFnaEmp" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtFnaEmp" runat="server" AutoPostBack="True" OnTextChanged="txtFnaEmp_TextChanged"></asp:TextBox>
+                            </div>
                                     <div class="calendario">
                                         <asp:Calendar ID="Nacimiento" runat="server" OnSelectionChanged="Nacimiento_SelectionChanged"></asp:Calendar>
                                      </div>
-                            </div>
-                    </div>
-                       <div class="casilla"> 
+                            
                             <div class="filaForm">Fecha de Ingreso</div>
                                 <div class="celda">
-                                    <asp:TextBox ID="txtFinEmp" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtFinEmp" runat="server" AutoPostBack="True" OnTextChanged="txtFinEmp_TextChanged"></asp:TextBox>
                                 </div>
                                     <div class="calendario">
                                         <asp:Calendar ID="Ingreso" runat="server" OnSelectionChanged="Ingreso_SelectionChanged"></asp:Calendar>
                                      </div>
-                        </div>
-                        <div class="casilla"> 
-                            <div class="filaForm">Antiguedad</div>
-                                <div class="celda">
-                                    <asp:TextBox ID="txtAnti" runat="server"></asp:TextBox>
-                                </div>
-                            <div class="filaForm">Años</div>
-                                <div class="celda">
-                                    <asp:TextBox ID="txtAno" runat="server"></asp:TextBox>
-                                </div>
-                            <div class="filaForm">Dias</div>
-                                <div class="celda">
-                                    <asp:TextBox ID="txtDia" runat="server"></asp:TextBox>
-                                </div>
+
+                            <div class="filaForm">Antiguedad</div>  
+                            <div class="">Años</div>
+                                
+                                    <asp:TextBox ID="txtAños" runat="server"></asp:TextBox>
+                               
+                             <div class="">Meses</div>
+                                
+                                    <asp:TextBox ID="txtMeses" runat="server"></asp:TextBox>
+                                
+                            <div class="">Dias</div>
+                                
+                                    <asp:TextBox ID="txtDias" runat="server"></asp:TextBox>
+                               
                                     
                         </div>
                         <div class="filaForm">  
