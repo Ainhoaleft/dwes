@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Empleados.aspx.cs" Inherits="GesPresta.Empleados" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Empleados1.aspx.cs" Inherits="GesPresta.Empleados1" %>
 
 <%@ Register src="Cabecera.ascx" tagname="Cabecera" tagprefix="uc1" %>
 
@@ -35,7 +35,7 @@
                                 <asp:TextBox ID="txtNomEmp" runat="server"></asp:TextBox>
                             </div>
                    </div>
-                 <div class="casilla"> 
+                  <div class="casilla"> 
                          <div class="filaForm">Direccion</div>
                             <div class="celda">
                                 <asp:TextBox ID="txtDirEmp" runat="server"></asp:TextBox>
@@ -86,9 +86,12 @@
                         </div>
                     </div>
                         <div class="filaForm">  
-                            <asp:Button ID="cmdEnviar" runat="server" Text="Enviar" />  
+                            <asp:Button ID="cmdEnviar" runat="server" Text="Enviar" OnClick="cmdEnviar_Click" />  
                         </div>
                 </div>
+                        <div class="container">
+                            <asp:Label ID="lblValores" runat="server" BackColor="#66FFFF" Text="" Visible="False" Width="60%"></asp:Label>
+                        </div>
     </form>
 </body>
 </html>
