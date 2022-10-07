@@ -21,6 +21,8 @@
                          <div class="filaForm">Codigo Prestación</div>  
                             <div class="celda"> 
                                 <asp:TextBox ID="txtCodPre" runat="server"></asp:TextBox> 
+                                <asp:RequiredFieldValidator ID="rqdCodPre" runat="server" ControlToValidate="txtCodPre" ErrorMessage="El Código de prestacion es obligatorio" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="regtxtCodPre" runat="server" ControlToValidate="txtCodPre" ErrorMessage="El formato de los datos a introducir debe ser 3 dígitos, un guión, 3 dígitos, un guion y, 3 dígitos" ForeColor="Green" ValidationExpression="\d{3}-\d{3}-\d{3}"></asp:RegularExpressionValidator>
                             </div>
                     </div>    
                     <div class="casilla"> 
@@ -33,12 +35,16 @@
                         <div class="filaForm">Importe Fijo</div>
                              <div class="celda">
                                 <asp:TextBox ID="txtImpPre" runat="server"></asp:TextBox>
+                                 <asp:RequiredFieldValidator ID="rqdImpPre" runat="server" ControlToValidate="txtImpPre" ErrorMessage="El porcentaje  es obligatorio" ForeColor="Red"></asp:RequiredFieldValidator>
+                                 <asp:RangeValidator ID="rngtxtImpPre" runat="server" ControlToValidate="txtImpPre" ErrorMessage="El valor introducido debe estar comprendido entre el 0,00 y el 500,00" ForeColor="#CC3300" MaximumValue="500,00" MinimumValue="0,00" Type="Double"></asp:RangeValidator>
                             </div>
                     </div>
                 <div class="casilla"> 
                         <div class="filaForm">Porcentaje del Importe</div>
                              <div class="celda">
                                 <asp:TextBox ID="txtPorPre" runat="server"></asp:TextBox>
+                                 <asp:RequiredFieldValidator ID="rqdPorPre" runat="server" ControlToValidate="txtPorPre" ErrorMessage="El tipo  es obligatorio" ForeColor="Red"></asp:RequiredFieldValidator>
+                                 <asp:RangeValidator ID="rngtxtPorPre" runat="server" ControlToValidate="txtPorPre" ErrorMessage="El valor introducido debe estar comprendido entre el 0,00 y el 15,00%" ForeColor="#CC3300" MaximumValue="15" MinimumValue="0" Type="Double"></asp:RangeValidator>
                             </div>
                     </div>
                     <div class="casilla"> 

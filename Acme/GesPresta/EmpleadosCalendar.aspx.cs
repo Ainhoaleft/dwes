@@ -91,7 +91,7 @@ namespace GesPresta
             DateTime fecha_ing = Convert.ToDateTime(ingCalendar).Date;
             DateTime fecha_nac = Convert.ToDateTime(nacCalendar).Date;
 
-            if (fecha_ing < fecha_nac)
+            if (fecha_nac > fecha_ing)
             {
                 lblError1.Visible = true;
                 lblError1.Text = "La fecha de ingreso es menor que la fecha de nacimiento ";
@@ -116,7 +116,7 @@ namespace GesPresta
             if (fecha_nac > dtHoy)
             {
                 lblError3.Visible = true;
-                lblError3.Text = "La fecha de nacimiento es mayo";
+                lblError3.Text = "La fecha de nacimiento es mayor";
                 fechas_valida = false;
             }
             else 
@@ -177,12 +177,12 @@ namespace GesPresta
         }
         protected void txtFinEmp_TextChanged(object sender, EventArgs e)
         {
-            DateTime dtHoy = System.DateTime.Now; 
-            
+            DateTime dtHoy = System.DateTime.Now;
+
             //Ingreso.SelectedDate = Convert.ToDateTime(txtFinEmp.Text);
             //Ingreso.VisibleDate = Convert.ToDateTime(txtFinEmp.Text);
 
-            string ingCalendar = Ingreso.SelectedDate.ToShortDateString();
+            string ingCalendar = txtFinEmp.Text;
             string nacCalendar = Nacimiento.SelectedDate.ToShortDateString();
 
             if (txtFinEmp.Text != "")

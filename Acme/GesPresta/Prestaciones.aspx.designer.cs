@@ -42,6 +42,24 @@ namespace GesPresta
         protected global::System.Web.UI.WebControls.TextBox txtCodPre;
 
         /// <summary>
+        /// Control rqdCodPre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdCodPre;
+
+        /// <summary>
+        /// Control regtxtCodPre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regtxtCodPre;
+
+        /// <summary>
         /// Control txtDesPre.
         /// </summary>
         /// <remarks>
@@ -60,6 +78,24 @@ namespace GesPresta
         protected global::System.Web.UI.WebControls.TextBox txtImpPre;
 
         /// <summary>
+        /// Control rqdImpPre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdImpPre;
+
+        /// <summary>
+        /// Control rngtxtImpPre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rngtxtImpPre;
+
+        /// <summary>
         /// Control txtPorPre.
         /// </summary>
         /// <remarks>
@@ -67,6 +103,24 @@ namespace GesPresta
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPorPre;
+
+        /// <summary>
+        /// Control rqdPorPre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdPorPre;
+
+        /// <summary>
+        /// Control rngtxtPorPre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rngtxtPorPre;
 
         /// <summary>
         /// Control ddlTipPre.
