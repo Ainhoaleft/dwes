@@ -11,7 +11,7 @@ namespace GesPresta
 {
 
 
-    public partial class Empleados
+    public partial class Prestaciones2
     {
 
         /// <summary>
@@ -33,193 +33,112 @@ namespace GesPresta
         protected global::GesPresta.Cabecera Cabecera1;
 
         /// <summary>
-        /// Control txtCodEmp.
+        /// Control btnVerPrestaciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodEmp;
+        protected global::System.Web.UI.WebControls.Button btnVerPrestaciones;
 
         /// <summary>
-        /// Control rqdTxtCodEmp.
+        /// Control txtCodPre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdTxtCodEmp;
+        protected global::System.Web.UI.WebControls.TextBox txtCodPre;
 
         /// <summary>
-        /// Control regtxtCodEmp.
+        /// Control rqdCodPre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regtxtCodEmp;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdCodPre;
 
         /// <summary>
-        /// Control txtNifEmp.
+        /// Control regtxtCodPre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNifEmp;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regtxtCodPre;
 
         /// <summary>
-        /// Control rqdtxtNifEmp.
+        /// Control txtDesPre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdtxtNifEmp;
+        protected global::System.Web.UI.WebControls.TextBox txtDesPre;
 
         /// <summary>
-        /// Control regtxtNifEmp.
+        /// Control txtImpPre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regtxtNifEmp;
+        protected global::System.Web.UI.WebControls.TextBox txtImpPre;
 
         /// <summary>
-        /// Control txtNomEmp.
+        /// Control rqdImpPre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNomEmp;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdImpPre;
 
         /// <summary>
-        /// Control rqdtxtNomEmp.
+        /// Control rngtxtImpPre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdtxtNomEmp;
+        protected global::System.Web.UI.WebControls.RangeValidator rngtxtImpPre;
 
         /// <summary>
-        /// Control txtDirEmp.
+        /// Control txtPorPre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDirEmp;
+        protected global::System.Web.UI.WebControls.TextBox txtPorPre;
 
         /// <summary>
-        /// Control txtCiuEmp.
+        /// Control rqdPorPre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCiuEmp;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdPorPre;
 
         /// <summary>
-        /// Control txtTelEmp.
+        /// Control rngtxtPorPre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelEmp;
+        protected global::System.Web.UI.WebControls.RangeValidator rngtxtPorPre;
 
         /// <summary>
-        /// Control rqdtxtTelEmp.
+        /// Control ddlTipPre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdtxtTelEmp;
-
-        /// <summary>
-        /// Control txtFnaEmp.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFnaEmp;
-
-        /// <summary>
-        /// Control rqdtxtFnaEmp.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdtxtFnaEmp;
-
-        /// <summary>
-        /// Control cmptxtFnaEmp.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator cmptxtFnaEmp;
-
-        /// <summary>
-        /// Control regtxtFnaEmp.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regtxtFnaEmp;
-
-        /// <summary>
-        /// Control txtFinEmp.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFinEmp;
-
-        /// <summary>
-        /// Control rqdtxtFinEmp.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdtxtFinEmp;
-
-        /// <summary>
-        /// Control regtxtFinEmp.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regtxtFinEmp;
-
-        /// <summary>
-        /// Control rblSexEmp.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblSexEmp;
-
-        /// <summary>
-        /// Control ddlDepEmp.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDepEmp;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipPre;
 
         /// <summary>
         /// Control cmdEnviar.
@@ -231,12 +150,21 @@ namespace GesPresta
         protected global::System.Web.UI.WebControls.Button cmdEnviar;
 
         /// <summary>
-        /// Control ValidationSummary1.
+        /// Control prestacionesBuscar1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        protected global::GesPresta.prestacionesBuscar prestacionesBuscar1;
+
+        /// <summary>
+        /// Control btnSeleccionar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSeleccionar;
     }
 }

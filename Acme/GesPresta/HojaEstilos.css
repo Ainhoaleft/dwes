@@ -38,19 +38,19 @@
 }
 
 .casilla {
-    display:table-row;
+    display: table-row;
+    width: 100%;
 }
 
 .filaForm {
     display: table-cell;
-    width: 80%;
-    margin: 5px;
-    text-align:right;
+    width: 100%;
+    text-align:center;
 }
 
 .celda {
     display: table-cell;
-    text-align: left;
+    text-align: right;
 }
 
 .cabeceraRes {
