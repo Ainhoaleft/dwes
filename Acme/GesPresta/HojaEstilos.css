@@ -10,8 +10,7 @@
 }
 
 .tabla {
-    display: table;
-    justify-content: space-between;
+    display: table; 
     width:100%; 
     border: 1px solid gray;  
 }
@@ -44,19 +43,22 @@
 
 .filaForm {
     display: table-cell;
-    width: 100%;
-    text-align:center;
+    width: 80%;
+    text-align:right;
+    margin: 5px;
 }
 
 .celda {
     display: table-cell;
     text-align: right;
+    width: 80%;
 }
 
 .cabeceraRes {
     text-align:center;
 }
 
-.calendario {
+.validar {
+    text-align: center;
 }
 

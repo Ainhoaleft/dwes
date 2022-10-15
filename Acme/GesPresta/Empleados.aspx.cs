@@ -25,5 +25,7 @@ namespace GesPresta
             }
             Trace.Write("Evento", "Saliendo de Page_Load");
         }
+
+       
     }
 }

@@ -36,7 +36,7 @@
                    <div class="casilla"> 
                         <div class="filaForm">Apellidos y Nombre</div>
                              <div class="celda">
-                                <asp:TextBox ID="txtNomEmp" runat="server"></asp:TextBox>
+                                 <asp:TextBox ID="txtNomEmp" runat="server"></asp:TextBox>
                                  <asp:RequiredFieldValidator ID="rqdtxtNomEmp" runat="server" ControlToValidate="txtNomEmp" ErrorMessage="El Nombre y apellidos es obligatorio" ForeColor="Red">*</asp:RequiredFieldValidator>
                             </div>
                    </div>
@@ -55,7 +55,7 @@
                     <div class="casilla"> 
                         <div class="filaForm">Telefonos</div>
                             <div class="celda">
-                                <asp:TextBox ID="txtTelEmp" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtTelEmp" runat="server" ></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rqdtxtTelEmp" runat="server" ControlToValidate="txtTelEmp" ErrorMessage="El telefono es obligatorio" ForeColor="Red">*</asp:RequiredFieldValidator>
                             </div>
                     </div>
@@ -100,7 +100,8 @@
                             <asp:Button ID="cmdEnviar" runat="server" Text="Enviar" />  
                         </div>
                 </div>
-        <asp:ValidationSummary ID="ValidationSummary1" runat="server" DisplayMode="List" />
+        <div class ="validar"> <asp:ValidationSummary ID="ValidationSummary1" runat="server" DisplayMode="List" /></div>
+       
     </form>
 </body>
 </html>
