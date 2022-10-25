@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace GesPresta
+namespace GesTienda
 {
 
 
-    public partial class Empleados
+    public partial class Registrarse
     {
 
         /// <summary>
@@ -24,219 +24,192 @@ namespace GesPresta
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control Cabecera1.
+        /// Control strCorCli.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::GesPresta.Cabecera Cabecera1;
+        protected global::System.Web.UI.WebControls.Label strCorCli;
 
         /// <summary>
-        /// Control txtCodEmp.
+        /// Control txtCorCli.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodEmp;
+        protected global::System.Web.UI.WebControls.TextBox txtCorCli;
 
         /// <summary>
-        /// Control rqdTxtCodEmp.
+        /// Control strPassword.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdTxtCodEmp;
+        protected global::System.Web.UI.WebControls.Label strPassword;
 
         /// <summary>
-        /// Control regtxtCodEmp.
+        /// Control txtPassword1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regtxtCodEmp;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword1;
 
         /// <summary>
-        /// Control txtNifEmp.
+        /// Control Label3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNifEmp;
+        protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
-        /// Control rqdtxtNifEmp.
+        /// Control txtPassword2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdtxtNifEmp;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword2;
 
         /// <summary>
-        /// Control regtxtNifEmp.
+        /// Control strIdCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regtxtNifEmp;
+        protected global::System.Web.UI.WebControls.Label strIdCliente;
 
         /// <summary>
-        /// Control txtNomEmp.
+        /// Control txtIdCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNomEmp;
+        protected global::System.Web.UI.WebControls.TextBox txtIdCliente;
 
         /// <summary>
-        /// Control rqdtxtNomEmp.
+        /// Control strNomCli.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdtxtNomEmp;
+        protected global::System.Web.UI.WebControls.Label strNomCli;
 
         /// <summary>
-        /// Control txtDirEmp.
+        /// Control txtNomCli.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDirEmp;
+        protected global::System.Web.UI.WebControls.TextBox txtNomCli;
 
         /// <summary>
-        /// Control txtCiuEmp.
+        /// Control strDirCli.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCiuEmp;
+        protected global::System.Web.UI.WebControls.Label strDirCli;
 
         /// <summary>
-        /// Control txtTelEmp.
+        /// Control txtDirCli.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelEmp;
+        protected global::System.Web.UI.WebControls.TextBox txtDirCli;
 
         /// <summary>
-        /// Control rqdtxtTelEmp.
+        /// Control strPobCli.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdtxtTelEmp;
+        protected global::System.Web.UI.WebControls.Label strPobCli;
 
         /// <summary>
-        /// Control txtFnaEmp.
+        /// Control txtPobCli.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFnaEmp;
+        protected global::System.Web.UI.WebControls.TextBox txtPobCli;
 
         /// <summary>
-        /// Control rqdtxtFnaEmp.
+        /// Control strCpoCli.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdtxtFnaEmp;
+        protected global::System.Web.UI.WebControls.Label strCpoCli;
 
         /// <summary>
-        /// Control cmptxtFnaEmp.
+        /// Control txtCpoCli.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator cmptxtFnaEmp;
+        protected global::System.Web.UI.WebControls.TextBox txtCpoCli;
 
         /// <summary>
-        /// Control regtxtFnaEmp.
+        /// Control strTelCli.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regtxtFnaEmp;
+        protected global::System.Web.UI.WebControls.Label strTelCli;
 
         /// <summary>
-        /// Control txtFinEmp.
+        /// Control txtTelCli.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFinEmp;
+        protected global::System.Web.UI.WebControls.TextBox txtTelCli;
 
         /// <summary>
-        /// Control rqdtxtFinEmp.
+        /// Control btnInsertar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqdtxtFinEmp;
+        protected global::System.Web.UI.WebControls.Button btnInsertar;
 
         /// <summary>
-        /// Control regtxtFinEmp.
+        /// Control LinkButton1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regtxtFinEmp;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
 
         /// <summary>
-        /// Control rblSexEmp.
+        /// Control lblMensajes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblSexEmp;
-
-        /// <summary>
-        /// Control ddlDepEmp.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDepEmp;
-
-        /// <summary>
-        /// Control cmdEnviar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cmdEnviar;
-
-        /// <summary>
-        /// Control ValidationSummary1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        protected global::System.Web.UI.WebControls.Label lblMensajes;
     }
 }

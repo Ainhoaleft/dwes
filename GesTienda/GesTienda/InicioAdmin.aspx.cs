@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GesPresta
+namespace GesTienda
 {
-    public partial class Cabecera : System.Web.UI.UserControl
+    public partial class InicioAdmin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

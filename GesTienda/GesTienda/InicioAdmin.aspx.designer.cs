@@ -11,7 +11,7 @@ namespace GesTienda
 {
 
 
-    public partial class About
+    public partial class InicioAdmin
     {
     }
 }

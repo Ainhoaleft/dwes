@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace GesPresta
+namespace GesTienda
 {
 
 
-    public partial class MPDefault
+    public partial class InicioUsuario
     {
     }
 }
