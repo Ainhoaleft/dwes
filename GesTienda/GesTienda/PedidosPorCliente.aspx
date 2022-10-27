@@ -21,9 +21,9 @@
         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
     </asp:GridView>
     <br />
-    <asp:Label ID="lblResultado" runat="server" Text="lblResultado"></asp:Label>
+    <asp:Label ID="lblResultado" runat="server"></asp:Label>
     <br />
-    <asp:Label ID="lblMensajes" runat="server" Text="lblMensajes"></asp:Label>
+    <asp:Label ID="lblMensajes" runat="server"></asp:Label>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [IdCliente], [NomCli], [PobCli], [CorCli] FROM [CLIENTE]"></asp:SqlDataSource>
-    <asp:Label ID="lblTotal" runat="server" Text="lblTotal" Visible="False"></asp:Label>
+    <asp:Label ID="lblTotal" runat="server" Visible="False"></asp:Label>
 </asp:Content>

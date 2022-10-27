@@ -24,6 +24,8 @@
         <SortedDescendingCellStyle BackColor="#FFFDF8" />
         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
     </asp:GridView>
+
+    <div style="text-align: center">
     <asp:Label ID="blIdProducto" runat="server" Text="Id. Producto"></asp:Label>
     <asp:TextBox ID="txtIdProducto" runat="server" Enabled="False"></asp:TextBox>
     <br />
@@ -40,9 +42,10 @@
     <asp:Label ID="lblIdTipo" runat="server" Text="Tipo Producto"></asp:Label>
     <asp:DropDownList ID="ddlIdTipo" runat="server" DataSourceID="SqlDataSource3" DataTextField="IdTipo" DataValueField="IdTipo" Enabled="False">
     </asp:DropDownList>
-   
+   </div>
     <br />
-   
+
+    <div style="text-align: center">
     <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" OnClick="btnNuevo_Click" /> 
     <asp:Button ID="btnEditar" runat="server" Text="Editar" Visible="False" OnClick="btnEditar_Click" />
     <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" Visible="False" OnClick="btnEliminar_Click" />
@@ -50,9 +53,11 @@
     <asp:Button ID="btnModificar" runat="server" Text="Modificar" Visible="False" OnClick="btnModificar_Click" />
     <asp:Button ID="btnBorrar" runat="server" Text="Borrar" Visible="False" OnClick="btnBorrar_Click" />
     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" Visible="False" OnClick="btnCancelar_Click" /> <br />
-    <asp:Label ID="lblResultado" runat="server" Text="lblResultado"></asp:Label> <br />
-     <asp:Label ID="lblMensajes" runat="server" Text="lblMensajes"></asp:Label> <br />
+    <asp:Label ID="lblResultado" runat="server"></asp:Label> <br />
+     <asp:Label ID="lblMensajes" runat="server"></asp:Label> <br />
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [UNIDAD]"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [TIPO]"></asp:SqlDataSource>
     <br />
+
+    </div>
 </asp:Content>

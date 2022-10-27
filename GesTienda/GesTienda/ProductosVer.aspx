@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="InfoContenido" runat="server">
     <h1>Productos</h1>
     <br />
-    <asp:Label ID="lblResultado" runat="server" Text="lblResultado"></asp:Label>
+    <asp:Label ID="lblResultado" runat="server"></asp:Label>
     <br />
-    <asp:Label ID="lblMensajes" runat="server" Text="lblMensajes"></asp:Label>
+    <asp:Label ID="lblMensajes" runat="server"></asp:Label>
 </asp:Content>

@@ -9,7 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div style="text-align: center">
             <h1>GesTienda</h1>
             <h3>Registro de usuario</h3>
             <div>
@@ -56,7 +56,7 @@
                 <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Default.aspx">Ir al Inicio</asp:LinkButton>
                 
             </div>
-            <div><asp:Label ID="lblMensajes" runat="server" Text="lblMensajes"></asp:Label></div>
+            <div><asp:Label ID="lblMensajes" runat="server"></asp:Label></div>
 
         </div>
     </form>

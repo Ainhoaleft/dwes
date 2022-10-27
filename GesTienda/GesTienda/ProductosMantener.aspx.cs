@@ -183,20 +183,16 @@ namespace GesTienda
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
-            lblMensajes.Text = "";
             btnNuevo.Visible = false;
             btnEliminar.Visible = false;
             btnInsertar.Visible = false;
             btnModificar.Visible = true;
             btnBorrar.Visible = false;
-            btnCancelar.Visible = true; 
-            txtDesPro.Text = "";
-            txtPrePro.Text = Convert.ToString(0);
-            ddlIdUnidad.DataBind(); // Vuelve a enlazar el control para que se actualicen los datos
-            ddlIdTipo.DataBind();
-            grdProductos.SelectedIndex = -1;
-            FnHabilitarControles();
-            txtIdProducto.Focus();
+            btnCancelar.Visible = true;
+            txtPrePro.Text = Convert.ToString(txtPrePro.Text);
+            FnHabilitarControles(); 
+            txtIdProducto.Enabled = false;
+          
         }
         protected void btnModificar_Click(object sender, EventArgs e)
         {
@@ -205,34 +201,67 @@ namespace GesTienda
             Decimal dcPrecio;
             strIdProducto = txtIdProducto.Text;
             strDescripcion = txtDesPro.Text;
-            dcPrecio = Convert.ToDecimal(txtPrePro.Text);
+            dcPrecio = Convert.ToDecimal(txtPrePro.Text.Replace('€',' '));
             strIdUnidad = ddlIdUnidad.SelectedItem.Text;
             strIdTipo = ddlIdTipo.SelectedItem.Value;
             string StrCadenaConexion =
             ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            string StrComandoSql = "UPDATE PRODUCTO " +
-             "(IdProducto,DesPro,PrePro,IdUnidad,IdTipo) VALUES (" +
-             "'" + strIdProducto + "','" + strDescripcion +
-             "'," + FnComaPorPunto(dcPrecio) +
-             ",'" + strIdUnidad + "','" + strIdTipo + "');";
+            string StrComandoSql = "UPDATE PRODUCTO SET " +
+             "DesPro ="  + strDescripcion + ", " + "PrePro ="  + FnComaPorPunto(dcPrecio) + ", " + "IdUnidad ="  + strIdUnidad + ", " + "IdTipo =" + strIdTipo + ", " 
+             + "WHERE IdProducto =" + "IN" + strIdProducto;
+
+            using (SqlConnection conexion = new SqlConnection(StrCadenaConexion))
+            {
+                try
+                {
+                    conexion.Open();
+                    SqlCommand comando = conexion.CreateCommand();
+                    comando.CommandText = StrComandoSql;
+                    SqlDataReader reader = comando.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        txtIdProducto.Text = reader.GetString(0);
+                        txtDesPro.Text = reader.GetString(1);
+                        txtPrePro.Text = string.Format("{0:C}", reader.GetDecimal(2));
+                        ddlIdUnidad.SelectedItem.Selected = false;
+                        ddlIdUnidad.SelectedItem.Text = reader.GetString(3);
+                        ddlIdTipo.SelectedItem.Selected = false;
+                        ddlIdTipo.SelectedItem.Text = reader.GetString(5);
+                    }
+                    else
+                    {
+                        lblMensajes.Text = "Se han modificado los registros de la consulta";
+                    }
+                    reader.Close();
+                    btnNuevo.Visible = true;
+                    btnEditar.Visible = true;
+                    btnEliminar.Visible = true;
+                    btnInsertar.Visible = false;
+                    btnModificar.Visible = false;
+                    btnBorrar.Visible = false;
+                    btnCancelar.Visible = false;
+                }
+                catch (SqlException ex)
+                {
+                    string StrError = "<p>Se han producido errores en el acceso a la base de datos.</p>";
+                    StrError = StrError + "<div>Código: " + ex.Number + "</div>";
+                    StrError = StrError + "<div>Descripción: " + ex.Message + "</div>";
+                    lblMensajes.Text = StrError;
+                    return;
+                }
+            }
         }
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            lblMensajes.Text = "";
             btnNuevo.Visible = false;
             btnEditar.Visible = false;  
             btnInsertar.Visible = false;
-            btnModificar.Visible = true;
+            btnModificar.Visible = false;
             btnBorrar.Visible = true;
             btnCancelar.Visible = true;
-            txtIdProducto.Text = "";
-            txtDesPro.Text = "";
-            txtPrePro.Text = Convert.ToString(0);
-            ddlIdUnidad.DataBind(); // Vuelve a enlazar el control para que se actualicen los datos
-            ddlIdTipo.DataBind();
-            grdProductos.SelectedIndex = -1;
             FnHabilitarControles();
-            txtIdProducto.Focus();
+
         }
         protected void btnBorrar_Click(object sender, EventArgs e)
         {
@@ -241,16 +270,53 @@ namespace GesTienda
             Decimal dcPrecio;
             strIdProducto = txtIdProducto.Text;
             strDescripcion = txtDesPro.Text;
-            dcPrecio = Convert.ToDecimal(txtPrePro.Text);
+            dcPrecio = Convert.ToDecimal(txtPrePro.Text.Replace('€', ' '));
             strIdUnidad = ddlIdUnidad.SelectedItem.Text;
             strIdTipo = ddlIdTipo.SelectedItem.Value;
             string StrCadenaConexion =
             ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            string StrComandoSql = "DELETE PRODUCTO " +
-             "(IdProducto,DesPro,PrePro,IdUnidad,IdTipo) VALUES (" +
-             "'" + strIdProducto + "','" + strDescripcion +
-             "'," + FnComaPorPunto(dcPrecio) +
-             ",'" + strIdUnidad + "','" + strIdTipo + "');";
+            string StrComandoSql = "DELETE FROM PRODUCTO WHERE IdProducto = " + " " + strIdProducto;
+            using (SqlConnection conexion = new SqlConnection(StrCadenaConexion))
+            {
+                try
+                {
+                    conexion.Open();
+                    SqlCommand comando = conexion.CreateCommand();
+                    comando.CommandText = StrComandoSql;
+                    SqlDataReader reader = comando.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        txtIdProducto.Text = reader.GetString(0);
+                        txtDesPro.Text = reader.GetString(1);
+                        txtPrePro.Text = string.Format("{0:C}", reader.GetDecimal(2));
+                        ddlIdUnidad.SelectedItem.Selected = false;
+                        ddlIdUnidad.SelectedItem.Text = reader.GetString(3);
+                        ddlIdTipo.SelectedItem.Selected = false;
+                        ddlIdTipo.SelectedItem.Text = reader.GetString(5);
+                    }
+                    else
+                    {
+                        lblMensajes.Text = "Los registros fueron eliminados de la consulta";
+                    }
+                    reader.Close();
+                    btnNuevo.Visible = true;
+                    btnEditar.Visible = true;
+                    btnEliminar.Visible = true;
+                    btnInsertar.Visible = false;
+                    btnModificar.Visible = false;
+                    btnBorrar.Visible = false;
+                    btnCancelar.Visible = false;
+                }
+                catch (SqlException ex)
+                {
+                    string StrError = "<p>Se han producido errores en el acceso a la base de datos.</p>";
+                    StrError = StrError + "<div>Código: " + ex.Number + "</div>";
+                    StrError = StrError + "<div>Descripción: " + ex.Message + "</div>";
+                    lblMensajes.Text = StrError;
+                    return;
+                }
+            }
         }
     }
  }

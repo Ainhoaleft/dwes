@@ -3,10 +3,11 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>GesTienda</h1><asp:Login ID="Login1" runat="server" BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#333333" OnAuthenticate="Login1_Authenticate"> 
+        <h1 style="text-align: center">GesTienda</h1><asp:Login ID="Login1" runat="server" BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#333333" OnAuthenticate="Login1_Authenticate" Width="80%"> 
+           
             <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
             <LayoutTemplate>
-                <table cellpadding="1" cellspacing="0" style="border-collapse:collapse;">
+                <table cellpadding="1" cellspacing="0" style="border-collapse:collapse; margin-left: 400px;">
                     <tr>
                         <td>
                             <table cellpadding="0">
@@ -55,9 +56,11 @@
             <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" Font-Size="0.9em" ForeColor="White" />
             </asp:Login>
        
-        <asp:Label ID="lblMensajes" runat="server" Text="lblMensajes"></asp:Label><br />
+        <br />
        
-        <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Registrarse.aspx">Registrarse</asp:LinkButton>
+        <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Registrarse.aspx">Registrarse</asp:LinkButton> <br />
+       
+        <asp:Label ID="lblMensajes" runat="server"></asp:Label>
        
     </div>
 
