@@ -57,10 +57,11 @@
             </asp:Login>
        
         <br />
+        <div style="text-align: center"> <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Registrarse.aspx">Registrarse</asp:LinkButton> <br /> 
+            <asp:Label ID="lblMensajes" runat="server"></asp:Label>
+       </div>
        
-        <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Registrarse.aspx">Registrarse</asp:LinkButton> <br />
        
-        <asp:Label ID="lblMensajes" runat="server"></asp:Label>
        
     </div>
 

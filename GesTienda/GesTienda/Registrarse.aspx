@@ -9,13 +9,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="text-align: center">
+        <div style="text-align: center; padding-bottom: 12px;">
             <h1>GesTienda</h1>
             <h3>Registro de usuario</h3>
             <div>
                 <asp:Label ID="strCorCli" runat="server" Text="Correo electronico"></asp:Label>
                 <asp:TextBox ID="txtCorCli" runat="server"></asp:TextBox>
             </div>
+
             <div>
                 <asp:Label ID="strPassword" runat="server" Text="Contraseña"></asp:Label>
                 <asp:TextBox ID="txtPassword1" runat="server" TextMode="Password"></asp:TextBox>

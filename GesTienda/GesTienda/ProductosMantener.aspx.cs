@@ -122,6 +122,7 @@ namespace GesTienda
             "'" + strIdProducto + "','" + strDescripcion +
             "'," + FnComaPorPunto(dcPrecio) +
             ",'" + strIdUnidad + "','" + strIdTipo + "');";
+           
             using (SqlConnection conexion = new SqlConnection(StrCadenaConexion))
             {
                 try
@@ -206,9 +207,11 @@ namespace GesTienda
             strIdTipo = ddlIdTipo.SelectedItem.Value;
             string StrCadenaConexion =
             ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            string StrComandoSql = "UPDATE PRODUCTO SET " +
-             "DesPro ="  + strDescripcion + ", " + "PrePro ="  + FnComaPorPunto(dcPrecio) + ", " + "IdUnidad ="  + strIdUnidad + ", " + "IdTipo =" + strIdTipo + ", " 
-             + "WHERE IdProducto =" + "IN" + strIdProducto;
+            string StrComandoSql = 
+                "UPDATE PRODUCTO SET IdProducto = '" + strIdProducto + "', DesPro = '" + strDescripcion
+                + "', PrePro = '" + FnComaPorPunto(dcPrecio)
+                + "', IdUnidad = '" + strIdUnidad + "', IdTipo = '" + strIdTipo 
+                + "'WHERE IdProducto = '" + strIdProducto + "'";
 
             using (SqlConnection conexion = new SqlConnection(StrCadenaConexion))
             {
@@ -275,7 +278,7 @@ namespace GesTienda
             strIdTipo = ddlIdTipo.SelectedItem.Value;
             string StrCadenaConexion =
             ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            string StrComandoSql = "DELETE FROM PRODUCTO WHERE IdProducto = " + " " + strIdProducto;
+            string StrComandoSql = "DELETE FROM PRODUCTO WHERE IdProducto = '" + strIdProducto + "'";
             using (SqlConnection conexion = new SqlConnection(StrCadenaConexion))
             {
                 try
