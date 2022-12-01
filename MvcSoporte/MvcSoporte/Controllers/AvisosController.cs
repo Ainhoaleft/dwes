@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,10 +22,63 @@ namespace MvcSoporte.Controllers
         }
 
         // GET: Avisos
-        public async Task<IActionResult> Index()
+        [Authorize(Roles = "Administrador")]
+        public async Task<IActionResult> Index(string strCadenaBusqueda,
+            string busquedaActual,int? intTipoAveriaId, int? tipoAveriaIdActual, 
+            int? pageNumber)
         {
-            var mvcSoporteContexto = _context.Avisos.Include(a => a.Empleado).Include(a => a.Equipo).Include(a => a.TipoAveria);
-            return View(await mvcSoporteContexto.ToListAsync());
+            if (strCadenaBusqueda != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                strCadenaBusqueda = busquedaActual;
+            }
+            ViewData["BusquedaActual"] = strCadenaBusqueda;
+            if (intTipoAveriaId != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                intTipoAveriaId = tipoAveriaIdActual;
+            }
+            ViewData["TipoAveriaIdActual"] = intTipoAveriaId;
+            // Cargar datos de los avisos
+            var avisos = _context.Avisos.AsQueryable();
+            // Ordenar los avisos de forma descendente por FechaAviso
+            avisos = avisos.OrderByDescending(s => s.FechaAviso);
+            // Para buscar avisos por nombre de empleado en la lista de valores
+            if (!String.IsNullOrEmpty(strCadenaBusqueda))
+            {
+                avisos = avisos.Where(s => s.Empleado.Nombre.Contains(strCadenaBusqueda));
+            }
+
+            // Para filtrar avisos por tipo de avería
+            if (intTipoAveriaId == null)
+            {
+                ViewData["TipoAveriaId"] = new SelectList(_context.TipoAverias, "Id",
+                "Descripcion");
+            }
+            else
+            {
+                ViewData["TipoAveriaId"] = new SelectList(_context.TipoAverias, "Id",
+                "Descripcion", intTipoAveriaId);
+                avisos = avisos.Where(x => x.TipoAveriaId == intTipoAveriaId);
+            }
+
+            avisos = avisos.Include(a => a.Empleado)
+                           .Include(a => a.Equipo)
+                           .Include(a => a.TipoAveria);
+            int pageSize = 3;
+            return View(await PaginatedList<Aviso>.CreateAsync(avisos.AsNoTracking(),
+            pageNumber ?? 1, pageSize));
+            // return View(await avisos.AsNoTracking().ToListAsync());
+           
+
+            //var mvcSoporteContexto = _context.Avisos.Include(a => a.Empleado).Include(a => a.Equipo).Include(a => a.TipoAveria);
+           // return View(await mvcSoporteContexto.ToListAsync());
         }
 
         // GET: Avisos/Details/5
@@ -50,7 +105,7 @@ namespace MvcSoporte.Controllers
         // GET: Avisos/Create
         public IActionResult Create()
         {
-            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "Id", "Nombre");
+            //ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "Id", "Nombre");
             ViewData["EquipoId"] = new SelectList(_context.Equipos, "Id", "CodigoEquipo");
             ViewData["TipoAveriaId"] = new SelectList(_context.TipoAverias, "Id", "Descripcion");
             return View();
@@ -63,13 +118,23 @@ namespace MvcSoporte.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Descripcion,FechaAviso,FechaCierre,Observaciones,EmpleadoId,TipoAveriaId,EquipoId")] Aviso aviso)
         {
+            // Se asigna al aviso el Id del empleado correspondiente al usuario actual
+            var emailUsuario = User.Identity.Name;
+            var empleado = await _context.Empleados
+            .Where(e => e.Email == emailUsuario)
+            .FirstOrDefaultAsync();
+            if (empleado != null)
+            {
+                aviso.EmpleadoId = empleado.Id;
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(aviso);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "Id", "Nombre", aviso.EmpleadoId);
+            //ViewData["EmpleadoId"] = new SelectList(_context.Empleados, "Id", "Nombre", aviso.EmpleadoId);
             ViewData["EquipoId"] = new SelectList(_context.Equipos, "Id", "CodigoEquipo", aviso.EquipoId);
             ViewData["TipoAveriaId"] = new SelectList(_context.TipoAverias, "Id", "Descripcion", aviso.TipoAveriaId);
             return View(aviso);

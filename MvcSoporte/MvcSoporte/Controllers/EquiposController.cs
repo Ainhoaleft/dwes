@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +22,7 @@ namespace MvcSoporte.Controllers
         }
 
         // GET: Equipos
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Index()
         {
             var mvcSoporteContexto = _context.Equipos.Include(e => e.Localizacion);
@@ -36,6 +39,10 @@ namespace MvcSoporte.Controllers
 
             var equipo = await _context.Equipos
                 .Include(e => e.Localizacion)
+                .Include(e => e.Avisos)
+                .ThenInclude(a => a.Empleado)
+                .Include(e => e.Avisos)
+                .ThenInclude(b => b.TipoAveria)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (equipo == null)
             {
