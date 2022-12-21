@@ -20,9 +20,16 @@ namespace MvcTienda.Controllers
         }
 
         // GET: Clientes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? pageNumber)
         {
-              return View(await _context.Clientes.ToListAsync());
+            // Cargar datos de Empleados
+            var clientes = from s in _context.Clientes
+                            select s;
+            int pageSize = 3;
+            return View(await PaginatedList<Cliente>.CreateAsync(clientes.AsNoTracking(),
+            pageNumber ?? 1, pageSize));
+
+            //return View(await _context.Clientes.ToListAsync());
         }
 
         // GET: Clientes/Details/5

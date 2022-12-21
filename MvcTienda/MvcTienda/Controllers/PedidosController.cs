@@ -20,10 +20,39 @@ namespace MvcTienda.Controllers
         }
 
         // GET: Pedidos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string strCadenaBusqueda, string busquedaActual, int? pageNumber)
         {
-            var mvcTiendaContexto = _context.Pedidos.Include(p => p.Cliente).Include(p => p.Estado);
-            return View(await mvcTiendaContexto.ToListAsync());
+            if (strCadenaBusqueda != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                strCadenaBusqueda = busquedaActual;
+            }
+            ViewData["BusquedaActual"] = strCadenaBusqueda;
+            // Cargar datos de los avisos
+            var pedidos = _context.Pedidos.AsQueryable();
+            // Ordenar los avisos de forma descendente por FechaAviso
+            pedidos = pedidos.OrderByDescending(s => s.Fecha);
+
+            // Para buscar avisos por nombre de empleado en la lista de valores
+            if (!String.IsNullOrEmpty(strCadenaBusqueda))
+            {
+                pedidos = pedidos.Where(s => s.Cliente.Nombre.Contains(strCadenaBusqueda));
+            }
+
+
+            pedidos = pedidos.Include(a => a.Cliente) 
+                             .Include(a => a.Estado);
+            int pageSize = 3;
+            return View(await PaginatedList<Pedido>.CreateAsync(pedidos.AsNoTracking(),
+                              pageNumber ?? 1, pageSize));
+            //return View(await pedidos.AsNoTracking().ToListAsync());
+
+
+            //var mvcTiendaContexto = _context.Pedidos.Include(p => p.Cliente).Include(p => p.Estado);
+            //return View(await mvcTiendaContexto.ToListAsync());
         }
 
         // GET: Pedidos/Details/5
