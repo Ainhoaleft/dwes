@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MvcTienda.Models.Producto>
+
+@{
+    ViewData["Title"] = "Escaparate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Escaparate.css" />
+</head>
+    <h1>Escaparate</h1>
+    <h4>Categorías</h4>
+
+<div class="row">
+    <div class="col-3">
+        <ul>
+            @foreach(var i in ViewData["ListaCategorias"] as IEnumerable<Categoria>)
+             {
+                <li><a asp-action="Index" asp-route-id="@i.Id">@i.Descripcion.ToString()</a></li>
+             }
+        </ul>
+    </div>
+
+    <div class="col-9">
+        <div class="row">
+            @foreach (var item in Model)
+             {
+                <div class="column">
+                    <div class="card">
+                        @{
+                            string Imagen = "ImagenDefault.jpg";
+                            if (item.Imagen != null)
+                            {
+                                Imagen = item.Imagen;
+                            }
+                        }
+                        <div class="imagen">
+                            <a href='#' title="@Imagen">
+                                <img class="Foto card-img-top" src="~/img/@Imagen" alt="@Imagen" />
+                            </a>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Descripcion)</h5>
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.Precio) €</p>
+                            <p class="card-text">Unidades disponibles: @Html.DisplayFor(modelItem => item.Stock)</p>
+                            <div class="card-body2">
+                                <form asp-action="Dummy">
+                                    <input type="hidden" name="id" value="@item.Id"/>
+                                    <button type="submit" class="addCarrito"><i class='bi-cart-plus'></i> AGREGAR AL CARRITO</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             }
+        </div>
+    </div>
+</div>
