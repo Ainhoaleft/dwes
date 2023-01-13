@@ -10,59 +10,81 @@ namespace MvcTienda.Controllers
     [Authorize(Roles = "Usuario")]
     public class MisDatosController : Controller
     {
-            private readonly MvcTiendaContexto _context;
-
-            public MisDatosController(MvcTiendaContexto context)
+        private readonly MvcTiendaContexto _context;
+        public MisDatosController(MvcTiendaContexto context)
+        {
+            _context = context;
+        }
+        // GET: MisDatos/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+        // POST: MisDatos/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult>
+        Create([Bind("Id,Nombre,Email,Telefono,FechaNacimiento")] Cliente cliente)
+        {
+            // Asignar el Email del usuario actuals
+            cliente.Email = User.Identity.Name;
+            if (ModelState.IsValid)
             {
-                _context = context;
+                _context.Add(cliente);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index", "Home");
             }
-            // GET: Clientes/Edit/5
-            public async Task<IActionResult> Edit()
+            return View(cliente);
+        }
+        // GET: MisDatos/Edit
+        public async Task<IActionResult> Edit()
+        {
+            // Se seleccionan los datos del empleado correspondiente al usuario actual
+            string? emailUsuario = User.Identity.Name;
+            Cliente? cliente = await _context.Clientes
+            .Where(e => e.Email == emailUsuario)
+            .FirstOrDefaultAsync();
+            if (cliente == null)
             {
-                string emailUsuario = User.Identity.Name;
-                if (emailUsuario == null)
-                {
-                    return NotFound();
-                }
-
-                var cliente = await _context.Clientes
-                    .Where(e => e.Email == emailUsuario)
-                    .FirstOrDefaultAsync();
-
-                if (cliente == null)
-                {
-                    return NotFound();
-                }
-                return View(cliente);
+                return NotFound();
             }
-
-            // POST: Clientes/Edit/5
-            // To protect from overposting attacks, enable the specific properties you want to bind to.
-            // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-            [HttpPost]
-            [ValidateAntiForgeryToken]
-            public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Email,Telefono,Direccion,Poblacion,CodigoPostal,Nif")] Cliente cliente)
+            return View(cliente);
+        }
+        // POST: MisDatos/Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id,
+        [Bind("Id,Nombre,Email,Telefono,FechaNacimiento")] Cliente cliente)
+        {
+            if (id != cliente.Id)
             {
-                if (id != cliente.Id)
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                try
                 {
-                    return NotFound();
+                    _context.Update(cliente);
+                    await _context.SaveChangesAsync();
                 }
-
-                if (ModelState.IsValid)
+                catch (DbUpdateConcurrencyException)
                 {
-                    try
+                    if (!EmpleadoExists(cliente.Id))
                     {
-                        _context.Update(cliente);
-                        await _context.SaveChangesAsync();
+                        return NotFound();
                     }
-                    catch (DbUpdateConcurrencyException)
+                    else
                     {
                         throw;
                     }
-                    return RedirectToAction("Index", "Home");
                 }
-                return View(cliente);
+                return RedirectToAction("Index", "Home");
             }
+            return View(cliente);
         }
-    }
-
+        private bool EmpleadoExists(int id)
+        {
+            return (_context.Clientes?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+    }  
+}

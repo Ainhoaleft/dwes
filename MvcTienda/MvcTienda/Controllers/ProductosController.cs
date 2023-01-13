@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
+﻿using System.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +8,7 @@ using MvcTienda.Models;
 
 namespace MvcTienda.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class ProductosController : Controller
     {
         private readonly MvcTiendaContexto _context;
@@ -23,10 +21,30 @@ namespace MvcTienda.Controllers
         }
 
         // GET: Productos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string strCadenaBusqueda)
         {
+            ViewData["BusquedaActual"] = strCadenaBusqueda;
+
             var mvcTiendaContexto = _context.Productos.Include(p => p.Categoria);
             return View(await mvcTiendaContexto.ToListAsync());
+
+            // Cargar datos de los avisos
+            var productos = _context.Productos.AsQueryable();
+
+            // Ordenar los avisos de forma descendente por FechaAviso
+            productos = productos.OrderByDescending(s => s.Categoria);
+
+            productos = productos.Include(a => a.Categoria)
+                                  .Include(a => a.Descripcion);
+            //.Include(a => a.TipoAveria);
+
+            return View(await productos.AsNoTracking().ToListAsync());
+
+            // Para buscar avisos por nombre de empleado en la lista de valores
+            if (!String.IsNullOrEmpty(strCadenaBusqueda))
+            {
+                productos = productos.Where(s => s.Categoria.Descripcion.Contains(strCadenaBusqueda));
+            }
         }
 
         // GET: Productos/Details/5
@@ -185,53 +203,60 @@ namespace MvcTienda.Controllers
             return View(producto);
 
         }
-        /* // POST: Productos/CambiarImagen/5
-         [HttpPost]
-         [ValidateAntiForgeryToken]
-         public async Task<IActionResult> CambiarImagen(int? id, IFormFile imagen)
-         {
-             if (id == null)
-             {
-                 return NotFound();
+        //POST: Productos/CambiarImagen/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CambiarImagen(int? id, IFormFile imagen)
+        {
+            if (id == null)
+            {
+                return NotFound();
 
-             }
-             if (imagen == null)
-             {
-                 return NotFound();
-             }
-             if (ModelState.IsValid)
-             {
-                 // Copiar archivo de imagen
-                 string strRutaImagenes = Path.Combine(_webHostEnvironment.WebRootPath, "imagenes");
-                 string strExtension = Path.GetExtension(imagen.FileName);
-                 string strNombreFichero = producto.Id.ToString() + strExtension;
-                 string strRutaFichero = Path.Combine(strRutaImagenes, strNombreFichero);
-             }
-             using (var fileStream = new FileStream(strRutaFichero, FileMode.Create))
-             {
-                 imagen.CopyTo(fileStream);
-             }
-             // Actualizar producto con nueva imagen
-             producto.Imagen = strNombreFichero;
-             try
-             {
-                 _context.Update(producto);
-                 await _context.SaveChangesAsync();
-             }
-             catch (DbUpdateConcurrencyException)
-             {
-                 if (!ProductoExists(producto.Id))
-                 {
-                     return NotFound();
-                 }
-                 else
-                 {
-                     throw;
-                 }
-             }
-         }
-         return View(producto);
-     }*/
+            }
+            var producto = await _context.Productos.FindAsync(id);
+            if (producto == null)
+            {
+                return NotFound();
+            }
+
+            if (imagen == null)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                // Copiar archivo de imagen
+                string strRutaImagenes = Path.Combine(_webHostEnvironment.WebRootPath, "imagenes");
+                string strExtension = Path.GetExtension(imagen.FileName);
+                string strNombreFichero = producto.Id.ToString() + strExtension;
+                string strRutaFichero = Path.Combine(strRutaImagenes, strNombreFichero);
+
+                using (var fileStream = new FileStream(strRutaFichero, FileMode.Create))
+                {
+                    imagen.CopyTo(fileStream);
+                }
+                // Actualizar producto con nueva imagen
+                producto.Imagen = strNombreFichero;
+                try
+                {
+                    _context.Update(producto);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ProductoExists(producto.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+                return View(producto);
+            }
+        }
     }
-}
+
 
