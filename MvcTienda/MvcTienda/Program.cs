@@ -68,8 +68,8 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-/*// Configurar el estado de la sesi�n
-app.UseSession();*/
+// Configurar el estado de la sesi�n
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

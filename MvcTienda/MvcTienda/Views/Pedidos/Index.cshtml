@@ -1,69 +1,43 @@
-﻿@*@model IEnumerable<MvcTienda.Models.Pedido>*@
-@model PaginatedList<MvcTienda.Models.Pedido>
+﻿@model IEnumerable<MvcTienda.Models.Pedido>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Pedido</h1>
+<h1>Índice</h1>
 
 <p>
-    <a asp-action="Create">Nuevo pedido</a>
+    <a asp-action="Create">Nuevo</a>
 </p>
-@* Agregar un cuadro de búsqueda en la vista Index de Avisos *@
-<form asp-action="Index">
-<div class="container">
-<div class="row align-items-start">
-<div class="col-md">
-<label class="control-label">Nombre empleado:</label>
-<input type="text" name="strCadenaBusqueda"
-value="@ViewData["BusquedaActual"]" class="form-control" />
-</div>
-<div class="col-md align-self-end">
-<input type="submit" value="Buscar" class="btn btn-default" /> |
-<a asp-action="Index" class="btn btn-default">Lista completa</a>
-</div>
-</div>
-</div>
-</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                Fecha
-               @* @Html.DisplayNameFor(model => model.Fecha)*@
+                @Html.DisplayNameFor(model => model.Fecha)
             </th>
             <th>
-                Confirmado
-                @* @Html.DisplayNameFor(model => model.Confirmado)*@
+                @Html.DisplayNameFor(model => model.Confirmado)
             </th>
             <th>
-                Preparado
-                @* @Html.DisplayNameFor(model => model.Preparado)*@
+                @Html.DisplayNameFor(model => model.Preparado)
             </th>
             <th>
-                Enviado
-                @* @Html.DisplayNameFor(model => model.Enviado)*@
+                @Html.DisplayNameFor(model => model.Enviado)
             </th>
             <th>
-                Cobrado
-                @* @Html.DisplayNameFor(model => model.Cobrado)*@
+                @Html.DisplayNameFor(model => model.Cobrado)
             </th>
             <th>
-                Devuelto
-                @* @Html.DisplayNameFor(model => model.Devuelto)*@
+                @Html.DisplayNameFor(model => model.Devuelto)
             </th>
             <th>
-                Anulado
-                @* @Html.DisplayNameFor(model => model.Anulado)*@
+                @Html.DisplayNameFor(model => model.Anulado)
             </th>
             <th>
-                Cliente
-                @* @Html.DisplayNameFor(model => model.Cliente)*@
+                @Html.DisplayNameFor(model => model.Cliente)
             </th>
             <th>
-                Estado
-                @* @Html.DisplayNameFor(model => model.Estado)*@
+                @Html.DisplayNameFor(model => model.Estado)
             </th>
             <th></th>
         </tr>
@@ -101,26 +75,9 @@ value="@ViewData["BusquedaActual"]" class="form-control" />
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
-@* Poner botones de página Siguiente y Anterior *@
-@{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-}
-<a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)"
-   asp-route-busquedaActual="@ViewData["BusquedaActual"]"
-   asp-route-tipoAveriaIdActual="@ViewData["TipoAveriaIdActual"]"
-   class="btn btn-outline-secondary @prevDisabled">
-    Anterior
-</a>
-<a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)"
-   asp-route-busquedaActual="@ViewData["BusquedaActual"]"
-   asp-route-tipoAveriaIdActual="@ViewData["TipoAveriaIdActual"]"
-   class="btn btn-outline-secondary @nextDisabled">
-    Siguiente
-</a>

@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MvcTienda.Data;
 using MvcTienda.Models;
+using System.Data;
 
 namespace MvcTienda.Controllers
 {

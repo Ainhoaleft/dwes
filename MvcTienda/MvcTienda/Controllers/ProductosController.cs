@@ -21,8 +21,15 @@ namespace MvcTienda.Controllers
         }
 
         // GET: Productos
-        public async Task<IActionResult> Index(string strCadenaBusqueda)
+        public async Task<IActionResult> Index(string strCadenaBusqueda, int? pageNumber)
         {
+            // Cargar datos de Empleados
+            var productos1 = from s in _context.Productos
+                            select s;
+            int pageSize = 3;
+            return View(await PaginatedList<Producto>.CreateAsync(productos1.AsNoTracking(),
+            pageNumber ?? 1, pageSize));
+
             ViewData["BusquedaActual"] = strCadenaBusqueda;
 
             var mvcTiendaContexto = _context.Productos.Include(p => p.Categoria);
