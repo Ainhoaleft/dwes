@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Data;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -41,7 +36,7 @@ namespace MvcTienda.Controllers
 
             productos = productos.Include(a => a.Categoria)
                                   .Include(a => a.Descripcion);
-                             //.Include(a => a.TipoAveria);
+            //.Include(a => a.TipoAveria);
 
             return View(await productos.AsNoTracking().ToListAsync());
 
@@ -208,53 +203,60 @@ namespace MvcTienda.Controllers
             return View(producto);
 
         }
-        /* POST: Productos/CambiarImagen/5
-         [HttpPost]
-         [ValidateAntiForgeryToken]
-         public async Task<IActionResult> CambiarImagen(int? id, IFormFile imagen)
-         {
-             if (id == null)
-             {
-                 return NotFound();
+        //POST: Productos/CambiarImagen/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CambiarImagen(int? id, IFormFile imagen)
+        {
+            if (id == null)
+            {
+                return NotFound();
 
-             }
-             if (imagen == null)
-             {
-                 return NotFound();
-             }
-             if (ModelState.IsValid)
-             {
-                 // Copiar archivo de imagen
-                 string strRutaImagenes = Path.Combine(_webHostEnvironment.WebRootPath, "imagenes");
-                 string strExtension = Path.GetExtension(imagen.FileName);
-                 string strNombreFichero = producto.Id.ToString() + strExtension;
-                 string strRutaFichero = Path.Combine(strRutaImagenes, strNombreFichero);
-             }
-             using (var fileStream = new FileStream(strRutaFichero, FileMode.Create))
-             {
-                 imagen.CopyTo(fileStream);
-             }
-             // Actualizar producto con nueva imagen
-             producto.Imagen = strNombreFichero;
-             try
-             {
-                 _context.Update(producto);
-                 await _context.SaveChangesAsync();
-             }
-             catch (DbUpdateConcurrencyException)
-             {
-                 if (!ProductoExists(producto.Id))
-                 {
-                     return NotFound();
-                 }
-                 else
-                 {
-                     throw;
-                 }
-             }
-         }
-         return View(producto);
-     }*/
+            }
+            var producto = await _context.Productos.FindAsync(id);
+            if (producto == null)
+            {
+                return NotFound();
+            }
+
+            if (imagen == null)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                // Copiar archivo de imagen
+                string strRutaImagenes = Path.Combine(_webHostEnvironment.WebRootPath, "imagenes");
+                string strExtension = Path.GetExtension(imagen.FileName);
+                string strNombreFichero = producto.Id.ToString() + strExtension;
+                string strRutaFichero = Path.Combine(strRutaImagenes, strNombreFichero);
+
+                using (var fileStream = new FileStream(strRutaFichero, FileMode.Create))
+                {
+                    imagen.CopyTo(fileStream);
+                }
+                // Actualizar producto con nueva imagen
+                producto.Imagen = strNombreFichero;
+                try
+                {
+                    _context.Update(producto);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ProductoExists(producto.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+                return View(producto);
+            }
+        }
     }
-}
+
 

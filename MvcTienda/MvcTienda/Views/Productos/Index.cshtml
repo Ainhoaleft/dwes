@@ -31,29 +31,37 @@
     <thead>
         <tr>
             <th>
+                Descripcion
                 @* @Html.DisplayNameFor(model => model.Descripcion*@
             </th>
             <th>
+                Texto
                 @* @Html.DisplayNameFor(model => model.Texto)*@
             </th>
             <th>
+                Precio
                 @* @Html.DisplayNameFor(model => model.Precio)*@
             </th>
             
             <th>
+
             @* @Html.DisplayNameFor(model => model.PrecioCadena)*@
             </th>
             
             <th>
+                Stock
                 @* @Html.DisplayNameFor(model => model.Stock)*@
             </th>
             <th>
+                Escaparate
                 @* @Html.DisplayNameFor(model => model.Escaparate)*@
             </th>
             <th>
+                Imagen
                 @* @Html.DisplayNameFor(model => model.Imagen)*@
             </th>
             <th>
+                Categoria
                 @* @Html.DisplayNameFor(model => model.Categoria)*@
             </th>
             <th></th>
@@ -93,7 +101,7 @@
                     }
                     @Verdadero
                 </td>
-           @*@<td>
+           <td>
                 @Html.DisplayFor(modelItem => item.Escaparate)
             </td>
            
@@ -105,9 +113,9 @@
                             Imagen = item.Imagen;
                         }
                     }
-                    <img class="Imagen" src="~/img/@Imagen" />
+                    <img class="Imagen" src="~/imagenes/@Imagen" />
                 </td>
-                *@
+                
             <td>
            
                 @Html.DisplayFor(modelItem => item.Imagen)
@@ -119,7 +127,7 @@
                 <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Cambiar imagen</a> 
+                <a asp-action="CambiarImagen" asp-route-id="@item.Id">Cambiar imagen</a> 
             </td>
         </tr>
 }

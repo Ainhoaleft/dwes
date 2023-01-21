@@ -84,6 +84,7 @@
 @{
     var contador = 0;
 }
+@*
 <div>
     <h4>Avisos recibidos del equipo</h4>
     <table class="table border-bottom">
@@ -101,7 +102,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Producto)
                 </td>
-                @* <td>
+                 <td>
                     @Html.DisplayFor(modelItem => item.FechaAviso)
                 </td>
                 <td>
@@ -112,7 +113,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TipoAveria.Descripcion)
-            </td>*@
+            </td>
                 <td>
                     <div class="d-print-none">
                         <a asp-action="Edit" asp-controller="Avisos"
@@ -126,7 +127,8 @@
         }
     </table>
 </div>
-<p class="text-center">Número de avisos: @contador </p>
+ *@
+<p class="text-center">Número de productos: @contador </p>
 <div class="d-print-none text-center">
     <a class="btn btn-primary" href="javascript:window.print()">Imprimir</a>
 </div>
@@ -134,5 +136,5 @@
     @* <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a> *@
     <a asp-action="Index">Volver</a>
-    asp-action="Index">Volver</a>
+   
 </div>

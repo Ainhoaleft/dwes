@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <None Include="D:\2DAW\servidor\SupuestoPractico\Tienda\MvcTienda\MvcTienda\.editorconfig" />
-    <None Include="Views\MisDatos\Edit.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

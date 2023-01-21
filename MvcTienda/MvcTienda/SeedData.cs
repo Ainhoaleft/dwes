@@ -30,13 +30,13 @@ namespace MvcTienda
         {
             // Comprobar si existe el administrador predetermindado
             var testAdmin = userManager.Users
-            .Where(x => x.UserName == "admin@empresa.com")
+            .Where(x => x.UserName == "admin@unity.com")
             .SingleOrDefault();
             if (testAdmin != null) return;
             testAdmin = new IdentityUser
             {
-                UserName = "admin@empresa.com",
-                Email = "admin@empresa.com"
+                UserName = "admin@unity.com",
+                Email = "admin@unity.com"
             };
             string admPasswd = "Admin-123";
             // Si no existe, se crea el administrador predeterminado "admin@empresa.com"

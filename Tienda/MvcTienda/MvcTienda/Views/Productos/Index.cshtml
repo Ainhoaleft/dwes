@@ -92,10 +92,10 @@
                     }
                     @Verdadero
                 </td>
-           @*@ <td>
+           @*@<td>
                 @Html.DisplayFor(modelItem => item.Escaparate)
             </td>
-            *@
+           
                 <td>
                     @{
                         string Imagen = "ImagenDefault.jpg";
@@ -106,7 +106,9 @@
                     }
                     <img class="Imagen" src="~/img/@Imagen" />
                 </td>
+                *@
             <td>
+           
                 @Html.DisplayFor(modelItem => item.Imagen)
             </td>
             <td>

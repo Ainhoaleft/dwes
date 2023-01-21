@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System.Data;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace MvcTienda.Controllers
 {
-    [Authorize(Roles = "Usuario")]
     public class MisPedidosController : Controller
     {
         public IActionResult Index()
