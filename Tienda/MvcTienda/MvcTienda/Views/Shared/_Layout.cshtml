@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MvcTienda</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MvcTienda.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/Carrito.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/Escaparate.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/PantallaAdmin.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/Productos.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" />
+   
 </head>
 <body>
     <header>
@@ -42,6 +39,10 @@
                                     <a class="nav-link text-dark" asp-area=""
                                        asp-controller="MisDatos" asp-action="Edit">Mis datos</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area=""
+                                       asp-controller="MisPedidos" asp-action="Index">Mis pedidos</a>
+                                </li>
                             }
                             @if (User.IsInRole("Administrador"))
                             {
@@ -64,6 +65,10 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area=""
                                asp-controller="Pedidos" asp-action="Index">Pedidos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area=""
+                               asp-controller="Usuarios" asp-action="Index">Usuarios</a>
                                 </li>
                                 
                             }

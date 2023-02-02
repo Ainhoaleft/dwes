@@ -31,7 +31,7 @@ value="@ViewData["BusquedaActual"]" class="form-control" />
         <tr>
             <th>
                 Fecha
-               @* @Html.DisplayNameFor(model => model.Fecha)*@
+                @*@Html.DisplayNameFor(model => model.Fecha)*@
             </th>
             <th>
                 Confirmado
@@ -101,12 +101,13 @@ value="@ViewData["BusquedaActual"]" class="form-control" />
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
 @* Poner botones de página Siguiente y Anterior *@
 @{
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
