@@ -25,6 +25,13 @@
 
   <ItemGroup>
     <None Include="D:\2DAW\servidor\SupuestoPractico\Tienda\MvcTienda\MvcTienda\.editorconfig" />
+    <None Include="Views\MisPedidos\Create.cshtml" />
+    <None Include="Views\MisPedidos\Delete.cshtml" />
+    <None Include="Views\MisPedidos\Details.cshtml" />
+    <None Include="Views\MisPedidos\Edit.cshtml" />
+    <None Include="Views\MisPedidos\Index.cshtml" />
+    <None Include="Views\Usuarios\Create.cshtml" />
+    <None Include="Views\Usuarios\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

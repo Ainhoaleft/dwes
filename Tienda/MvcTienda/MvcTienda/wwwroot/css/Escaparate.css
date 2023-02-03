@@ -12,8 +12,8 @@
 }
 
 .imagen {
-    max-height: 300px;
-    min-height: 300px;
+    max-height: 900px;
+    min-height: 100px;
 }
 
 li {
@@ -21,13 +21,13 @@ li {
 }
 
 .card {
-    width: 500px;
-    height: 500px;
+    width: 200px;
+    height: 200px;
     overflow: hidden;
 }
 
 .card-body {
-    width: 500px;
+    width: 200px;
     height: 200px;
 }
 

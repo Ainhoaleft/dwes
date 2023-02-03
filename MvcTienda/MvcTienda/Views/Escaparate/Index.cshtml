@@ -35,10 +35,10 @@
                         }
                         <div class="imagen">
                             <a href='#' title="@Imagen">
-                                <img class="Foto card-img-top" src="~/imagenes/@Imagen" alt="@Imagen" />
+                                <img style="width:200px; height:200px;" src="~/imagenes/@Imagen" alt="@Imagen" />
                             </a>
                         </div>
-
+                       
                         <div class="card-body">
                             <h5 class="card-title">@Html.DisplayFor(modelItem => item.Descripcion)</h5>
                             <p class="card-text">@Html.DisplayFor(modelItem => item.Precio) €</p>
@@ -51,6 +51,7 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
              }
         </div>

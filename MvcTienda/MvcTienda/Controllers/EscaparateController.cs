@@ -246,6 +246,7 @@ namespace MvcTienda.Controllers
         // POST:
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //[Authorize(Roles = "Administrador")]
         [Authorize(Roles = "Usuario")]
         public async Task<IActionResult> Dummy(int? id)
         {
