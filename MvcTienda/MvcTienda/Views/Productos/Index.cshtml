@@ -1,5 +1,4 @@
-﻿@model IEnumerable<MvcTienda.Models.Producto>
-@*@model PaginatedList<MvcTienda.Models.Producto>*@
+﻿@model PaginatedList<MvcTienda.Models.Producto>
 
 @{
     ViewData["Title"] = "Index";
@@ -14,42 +13,59 @@
     <a asp-action="Create">Crear nuevo</a>
 </p>
 
+@* Agregar un cuadro de búsqueda en la vista Index de Avisos *@
+<form asp-action="Index">
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col-md">
+                <label class="control-label">Nombre de Descripcion:</label>
+                <input type="text" name="strCadenaBusqueda"
+                       value="@ViewData["BusquedaActual"]" class="form-control" />
+            </div>
+            <div class="col-md align-self-end">
+                <input type="submit" value="Buscar" class="btn btn-default" /> |
+                <a asp-action="Index" class="btn btn-default">Lista completa</a>
+            </div>
+        </div>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-               
-                 @Html.DisplayNameFor(model => model.Descripcion)
+                 Descripcion
+                @*@Html.DisplayNameFor(model => model.Descripcion)*@
             </th>
             <th>
-               
-                 @Html.DisplayNameFor(model => model.Texto)
+                Texto
+                @* @Html.DisplayNameFor(model => model.Texto)*@
             </th>
             <th>
-                
-                 @Html.DisplayNameFor(model => model.Precio)
+                Precio
+                @* @Html.DisplayNameFor(model => model.Precio)*@
             </th>
             
             <th>
 
-            @* @Html.DisplayNameFor(model => model.PrecioCadena)*@
+                @* @Html.DisplayNameFor(model => model.PrecioCadena)*@
             </th>
             
             <th>
-               
-                @Html.DisplayNameFor(model => model.Stock)
+                Stock
+                @* @Html.DisplayNameFor(model => model.Stock)*@
             </th>
             <th>
-                
-                 @Html.DisplayNameFor(model => model.Escaparate)
+                Escaparate
+                @*  @Html.DisplayNameFor(model => model.Escaparate)*@
             </th>
             <th>
-               
-                @Html.DisplayNameFor(model => model.Imagen)
+                Imagen
+                @* @Html.DisplayNameFor(model => model.Imagen)*@
             </th>
             <th>
-                
-                 @Html.DisplayNameFor(model => model.Categoria)
+                Categoria
+                @*  @Html.DisplayNameFor(model => model.Categoria)*@
             </th>
             <th></th>
         </tr>
@@ -66,11 +82,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Precio)
             </td>
-            @*
+            
             <td>
                 @Html.DisplayFor(modelItem => item.PrecioCadena)
             </td>
-            *@
+            
             <td>
                 @Html.DisplayFor(modelItem => item.Stock)
             </td>
@@ -123,4 +139,18 @@
 }
     </tbody>
 </table>
+
+@* Poner botones de página Siguiente y Anterior *@
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)"
+   class="btn btn-outline-secondary @prevDisabled">
+    Anterior
+</a>
+<a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)"
+   class="btn btn-outline-secondary @nextDisabled">
+    Siguiente
+</a>
 
