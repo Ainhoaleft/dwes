@@ -107,7 +107,7 @@
                             Imagen = detalle.Producto.Imagen;
                         }
                         <tr>
-                            <td><img class="Imagen" src="~/imagenes/@Imagen" /></td>
+                            <td><img class="Imagen" style="width:100px" src="~/imagenes/@Imagen" /></td>
                         <td>@detalle.ProductoId</td>
                         <td>@detalle.Producto.Descripcion</td>
                         <td>
@@ -122,7 +122,7 @@
                         </td>
                         <td>@detalle.Precio</td>
                         <td>@detalle.Descuento</td>
-                        <td>@total €</td>
+                            <td>@total.ToString("C")</td>
                         <td>
                             <form asp-action="EliminarLinea">
                                 <input type="submit" value="Eliminar" asp-action="EliminarLinea" asp-controller="Carrito" asp-route-id="@detalle.Id" />
@@ -140,7 +140,7 @@
                     <td></td>
                     <td></td>
                     <td>Total</td>
-                    <td>@TotalDeTotales                    
+                    <td>@TotalDeTotales.ToString("C")                    
                     </td>
                     <td></td>
                 </tr>

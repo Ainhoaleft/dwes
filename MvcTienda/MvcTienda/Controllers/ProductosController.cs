@@ -22,8 +22,9 @@ namespace MvcTienda.Controllers
         }
 
         // GET: Productos
-        public async Task<IActionResult> Index(string strCadenaBusqueda, int? pageNumber)
+        public async Task<IActionResult> Index(string strCadenaBusqueda, int? pageNumber, int? categoriaId, int? categoriaIdActual, string busquedaActual)
         {
+
             if (strCadenaBusqueda != null)
             {
                 pageNumber = 1;
@@ -35,21 +36,26 @@ namespace MvcTienda.Controllers
             var productos = _context.Productos.AsQueryable();
 
             productos = productos.OrderBy(x => x.Descripcion);
-            
-             productos = productos.Include(a => a.Categoria)
-                                    .Include(a => a.Detalles);
 
-            
-              ViewData["BusquedaActual"] = strCadenaBusqueda;
-             int pageSize = 3;
-             return View(await PaginatedList<Producto>.CreateAsync(productos.AsNoTracking(),
-             pageNumber ?? 1, pageSize));
+            if (!String.IsNullOrEmpty(strCadenaBusqueda))
+            {
+                productos = productos.Where(s => s.Descripcion.Contains(strCadenaBusqueda));
+            }
 
-              var mvcTiendaContexto = _context.Productos.Include(p => p.Categoria);
-              return View(await mvcTiendaContexto.ToListAsync());
+            productos = productos.Include(a => a.Categoria)
+                                   .Include(a => a.Detalles);
 
-             return View(await productos.AsNoTracking().ToListAsync());
- 
+
+            ViewData["BusquedaActual"] = strCadenaBusqueda;
+            int pageSize = 3;
+            return View(await PaginatedList<Producto>.CreateAsync(productos.AsNoTracking(),
+            pageNumber ?? 1, pageSize));
+
+            var mvcTiendaContexto = _context.Productos.Include(p => p.Categoria);
+            return View(await mvcTiendaContexto.ToListAsync());
+
+            return View(await productos.AsNoTracking().ToListAsync());
+
         }
 
         // GET: Productos/Details/5

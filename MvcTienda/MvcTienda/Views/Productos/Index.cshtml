@@ -22,9 +22,16 @@
                 <input type="text" name="strCadenaBusqueda"
                        value="@ViewData["BusquedaActual"]" class="form-control" />
             </div>
+           
             <div class="col-md align-self-end">
                 <input type="submit" value="Buscar" class="btn btn-default" /> |
                 <a asp-action="Index" class="btn btn-default">Lista completa</a>
+            </div> 
+            <div>
+                Categoria
+                <select name="categoriaId" asp-items="ViewBag.Categoria">
+                    <option value="">Todas</option>
+                </select>
             </div>
         </div>
     </div>
@@ -41,13 +48,13 @@
                 Texto
                 @* @Html.DisplayNameFor(model => model.Texto)*@
             </th>
-            <th>
+            @* <th>
                 Precio
-                @* @Html.DisplayNameFor(model => model.Precio)*@
-            </th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>*@
             
             <th>
-
+                Precio
                 @* @Html.DisplayNameFor(model => model.PrecioCadena)*@
             </th>
             
@@ -79,18 +86,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Texto)
             </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Precio)
             </td>
-            
+            @*
             <td>
                 @Html.DisplayFor(modelItem => item.PrecioCadena)
             </td>
-            
+            *@
             <td>
                 @Html.DisplayFor(modelItem => item.Stock)
             </td>
                 <td>
+                   @* @Html.DisplayFor(modelItem => item.Escaparate)*@
                     @{
                         string Verdadero = "Visible";
                         if (item.Escaparate == true)
@@ -104,12 +113,6 @@
                     }
                     @Verdadero
                 </td>
-
-                 <td>
-            @Html.DisplayFor(modelItem => item.Escaparate) 
-            </td>
-           
-           
                 <td>
                     @{
                         string Imagen = "ImagenDefault.jpg";
