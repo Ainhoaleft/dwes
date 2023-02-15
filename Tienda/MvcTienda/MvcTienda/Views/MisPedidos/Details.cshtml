@@ -168,8 +168,18 @@ else
         <input class="btn btn-success" type="submit" value="Confirmar Pedido" asp-action="ConfirmarPedido" asp-controller="Carrito" asp-route-id="@Model.Id" />
     </form>
 }
+@{
+    var contador = 0;
+    contador = contador + 1;
+}
+<p class="text-center">Número de productos: @contador </p>
+<div class="d-print-none text-center">
+    <a class="btn btn-primary" href="javascript:window.print()">Imprimir</a>
+</div>
 
 
-<div>
+<div class="d-print-none">    
     <a asp-action="Index">Volver a mis pedidos</a>
 </div>
+
+
