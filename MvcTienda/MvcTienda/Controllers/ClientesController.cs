@@ -44,7 +44,10 @@ namespace MvcTienda.Controllers
             }
 
             var cliente = await _context.Clientes
+                .Include(e => e.Pedidos)
+                .ThenInclude(a => a.Estado)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (cliente == null)
             {
                 return NotFound();
@@ -83,7 +86,9 @@ namespace MvcTienda.Controllers
                 return NotFound();
             }
 
-            var cliente = await _context.Clientes.FindAsync(id);
+            var cliente = await _context.Clientes
+                
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (cliente == null)
             {
                 return NotFound();

@@ -47,7 +47,7 @@ namespace MvcTienda.Controllers
 
 
             ViewData["BusquedaActual"] = strCadenaBusqueda;
-            int pageSize = 3;
+            int pageSize = 5;
             return View(await PaginatedList<Producto>.CreateAsync(productos.AsNoTracking(),
             pageNumber ?? 1, pageSize));
 
@@ -110,6 +110,12 @@ namespace MvcTienda.Controllers
             }
 
             var producto = await _context.Productos.FindAsync(id);
+                //.Include(e => e.Pedidos)
+                //.ThenInclude(a => a.Cantidad)
+                //.Include(e => e.Categoria)
+               // .ThenInclude(a => a.Descripcion)
+               //.FirstOrDefaultAsync(m => m.Id == id);
+
             if (producto == null)
             {
                 return NotFound();

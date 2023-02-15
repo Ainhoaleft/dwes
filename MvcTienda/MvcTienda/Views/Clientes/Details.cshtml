@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Detalles</h1>
 
 <div>
     <h4>Cliente</h4>
@@ -55,6 +55,65 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
+    <a asp-action="Index">Vuelve a la lista</a>
 </div>
+
+@* Se añade código para presentar los avisos del equipo seleccionado *@
+
+<div>
+    <h4>Pedidos de los clientes</h4>
+    <table class="table border-bottom">
+        <tr>
+            <th>Estado</th>
+            <th>Fecha </th>
+            <th>Confirmado</th>
+         
+        </tr>
+       @foreach (var item in Model.Pedidos)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Confirmado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preparado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Enviado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cobrado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Devuelto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Anulado)
+                </td>
+                <td>
+                    <div class="d-print-none">
+                        <a asp-action="Edit" asp-controller="Pedidos"
+                       asp-route-id="@item.Id">Editar</a> |
+                        <a asp-action="Delete" asp-controller="Pedidos"
+                       asp-route-id="@item.Id">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            
+        }
+    </table>
+    <div class="d-print-none text-center">
+        <a class="btn btn-primary" href="javascript:window.print()">Imprimir</a>
+    </div>
+    <div class="d-print-none">
+        @* <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a> *@
+        <a asp-action="Index">Volver</a>
+    </div>
