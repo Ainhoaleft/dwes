@@ -21,7 +21,7 @@
                     }
 
                 }
-                <img src="~/imagenes/ImagenDefault.jpg" style="width:250px; height:250px;" alt="No funciona" asp-append-version="true"/>
+                <img src="~/imagenes/@ImagenDefault" style="width:250px; height:250px;" alt="No funciona" asp-append-version="true"/>
             </div>
         </dd>
     </dl>
@@ -30,13 +30,13 @@
             @Html.DisplayNameFor(model => model.Descripcion)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayNameFor(model => model.Descripcion)
+            @Html.DisplayFor(model => model.Descripcion)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Texto)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayNameFor(model => model.Texto)
+            @Html.DisplayFor(model => model.Texto)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Precio)
@@ -48,13 +48,13 @@
             @Html.DisplayNameFor(model => model.Stock)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayNameFor(model => model.Stock)
+            @Html.DisplayFor(model => model.Stock)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Categoria)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayNameFor(model => model.Categoria.Descripcion)
+            @Html.DisplayFor(model => model.Categoria.Descripcion)
         </dd>
 
         <dt class="col-sm-2">

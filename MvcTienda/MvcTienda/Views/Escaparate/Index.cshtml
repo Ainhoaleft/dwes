@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <head>
-    
+  
     
 </head>
     <h1>Escaparate</h1>
@@ -51,14 +51,21 @@
                             <p class="card-text" style="height:50px;">@Html.DisplayFor(modelItem => item.Descripcion)</p>
                             <h2>@Html.DisplayFor(modelItem => item.Precio) €</h2>
                             <br/>
-                            <p>Unidades disponibles: @Html.DisplayFor(modelItem => item.Stock)</p>
-                        </div>
+                            <p>Unidades disponibles: @Html.DisplayFor(modelItem => item.Stock)</p> 
                             <div class="card-footer">
                                 <form asp-action="Dummy">
-                                    <input type="hidden" name="id" value="@item.Id"/>
-                                <a asp-action="AñadirCarrito" type="submit" asp-route-id="@item.Id" class="btn btn-success"><i class='bi-cart-plus'></i> AGREGAR AL CARRITO</a>
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="btn btn-success" onclick="agregarAlCarrito()"><i class='bi-cart-plus'></i> AGREGAR AL CARRITO</button>
+                                    <script>
+                                        function agregarAlCarrito() {
+                                            alert("El producto ha sido agregado al carrito.");
+                                        }
+                                    </script>
+                                    <a asp-action="AnyadirCarrito" type="submit" asp-route-id="@item.Id" class="btn btn-success"><i class='bi-cart-plus'></i> Detalles</a>
                                 </form>
                             </div>
+                        </div>
+                           
                         
                     </div>
                     
