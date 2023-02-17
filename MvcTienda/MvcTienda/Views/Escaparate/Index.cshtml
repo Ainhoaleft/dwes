@@ -5,14 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <head>
-  
+    
     
 </head>
+ 
     <h1>Escaparate</h1>
     <h4>Categorías</h4>
 
-    <div class="container-fluid">
-<div class="row">
+    <div class="container-fluid" >
+    <div class="row" style="background:pink">
         @* Categorias *@
     <div class="col-lg-3 col-md-12 col-sm-12">
         <table class="table">
@@ -29,12 +30,13 @@
       
     </div>
         @* Tarjetas de productos *@
-    <div class="col-lg-9 col-md-12 col-sm-12">
-        <div class="row" style="margin:65px">
+        <div class="col-lg-9 col-md-12 col-sm-12" style=" background: rgb(107,107,113);
+    background: linear-gradient(90deg, rgba(107,107,113,1) 0%, rgba(110,121,139,1) 35%, rgba(100,150,161,1) 100%);">
+        <div class="row" style="margin:50px">
             @foreach (var item in Model)
              {
               
-                        <div class="card" style="width:240px; height:450px; text-align:center; margin: 10px;">
+                        <div class="card" style="width:240px; height:490px; text-align:center; margin: 10px;">
                            <div>
                             @{
                             string Imagen = "ImagenDefault.jpg";
@@ -58,10 +60,11 @@
                                     <button type="submit" class="btn btn-success" onclick="agregarAlCarrito()"><i class='bi-cart-plus'></i> AGREGAR AL CARRITO</button>
                                     <script>
                                         function agregarAlCarrito() {
-                                            alert("El producto ha sido agregado al carrito.");
+
+                                            alert("😁");
                                         }
                                     </script>
-                                    <a asp-action="AnyadirCarrito" type="submit" asp-route-id="@item.Id" class="btn btn-success"><i class='bi-cart-plus'></i> Detalles</a>
+                                    <a asp-action="AnyadirCarrito" type="submit" asp-route-id="@item.Id" class="btn btn-warning" style="margin-top:10px;"><i class='bi-cart-plus'></i> Detalles</a>
                                 </form>
                             </div>
                         </div>

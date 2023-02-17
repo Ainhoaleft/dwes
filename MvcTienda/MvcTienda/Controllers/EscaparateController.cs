@@ -242,7 +242,7 @@ namespace MvcTienda.Controllers
 
             return Ok();
         }
-
+      
         // POST:
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -250,6 +250,7 @@ namespace MvcTienda.Controllers
         [Authorize(Roles = "Usuario")]
         public async Task<IActionResult> Dummy(int? id)
         {
+ 
             string emailUsuario = User.Identity.Name;
             int ClienteId;
             Pedido pedidoActual;
