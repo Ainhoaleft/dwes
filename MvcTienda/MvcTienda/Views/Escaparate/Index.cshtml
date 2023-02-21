@@ -13,15 +13,15 @@
     <h4>Categorías</h4>
 
     <div class="container-fluid" >
-    <div class="row" style="background:pink">
+    <div class="row" style="background:wheat">
         @* Categorias *@
     <div class="col-lg-3 col-md-12 col-sm-12">
         <table class="table">
        
             @foreach(var i in ViewData["ListaCategorias"] as IEnumerable<Categoria>)
              {
-                 <tr>
-                        <td><a asp-action="Index" asp-route-id="@i.Id">@i.Descripcion.ToString()</a>
+                    <tr>
+                        <td ><a asp-action="Index" asp-route-id="@i.Id">@i.Descripcion.ToString()</a>
                         </td>
                  </tr>
              }
@@ -57,8 +57,14 @@
                             <div class="card-footer">
                                 <form asp-action="Dummy">
                                     <input type="hidden" name="id" value="@item.Id" />
+                                    @if (item.Stock <= 0)
+                                    {
+                                        <button type="button" class="btn btn-danger btn-disabled"><i class='bi-cart-plus'></i> AGOTADO</button>
+                                    }
+                                    else
+                                    {
                                     <button type="submit" class="btn btn-success" onclick="agregarAlCarrito()"><i class='bi-cart-plus'></i> AGREGAR AL CARRITO</button>
-                                    <script>
+                                    }<script>
                                         function agregarAlCarrito() {
 
                                             alert("😁");

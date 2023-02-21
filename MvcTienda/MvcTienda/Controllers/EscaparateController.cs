@@ -76,6 +76,8 @@ namespace MvcTienda.Controllers
             {
                 return NotFound();
             }
+
+
             // Crear nuevo pedido, si el carrito está vacío y, por tanto, no existe pedido actual
             // La variable de sesión NumPedido almacena el número de pedido del carrito
             //if (string.IsNullOrEmpty(HttpContext.Session.GetString("NumPedido")) )
@@ -205,17 +207,27 @@ namespace MvcTienda.Controllers
 
                 if (pedidoActual != null)
                 {
-                    // si hemos encontrado el pedido, añadimos una nueva línea al pedido.
-                    Detalle detalle = new Detalle();
-                    detalle.ProductoId = producto.Id;
-                    detalle.Cantidad = 1;
-                    detalle.Descuento = 0;
-                    detalle.Precio = producto.Precio;
-                    detalle.PedidoId = pedidoActual.Id;
+                    // Buscamos si ya existe una línea para el producto en el pedido actual
+                    var lineaExistente = pedidoActual.Detalles.FirstOrDefault(d => d.ProductoId == producto.Id);
+                    if (lineaExistente != null)
+                    {
+                        // Si ya existe una línea, incrementamos la cantidad
+                        lineaExistente.Cantidad += 1;
+                    }
+                    else
+                    {
+                        // si hemos encontrado el pedido, añadimos una nueva línea al pedido.
+                        Detalle detalle = new Detalle();
+                        detalle.ProductoId = producto.Id;
+                        detalle.Cantidad = 1;
+                        detalle.Descuento = 0;
+                        detalle.Precio = producto.Precio;
+                        detalle.PedidoId = pedidoActual.Id;
 
-                    pedidoActual.Detalles.Add(detalle);
+                        pedidoActual.Detalles.Add(detalle);
 
-                    _context.Detalles.Add(detalle);
+                        _context.Detalles.Add(detalle);
+                    }
                 }
                 else
                 {
@@ -288,17 +300,27 @@ namespace MvcTienda.Controllers
 
                 if (pedidoActual != null)
                 {
-                    // si hemos encontrado el pedido, añadimos una nueva línea al pedido.
-                    Detalle detalle = new Detalle();
-                    detalle.ProductoId = producto.Id;
-                    detalle.Cantidad = 1;
-                    detalle.Descuento = 0;
-                    detalle.Precio = producto.Precio;
-                    detalle.PedidoId = pedidoActual.Id;
+                    // Buscamos si ya existe una línea para el producto en el pedido actual
+                    var lineaExistente = pedidoActual.Detalles.FirstOrDefault(d => d.ProductoId == producto.Id);
+                    if (lineaExistente != null)
+                    {
+                        // Si ya existe una línea, incrementamos la cantidad
+                        lineaExistente.Cantidad += 1;
+                    }
+                    else
+                    {
+                        // si hemos encontrado el pedido, añadimos una nueva línea al pedido.
+                        Detalle detalle = new Detalle();
+                        detalle.ProductoId = producto.Id;
+                        detalle.Cantidad = 1;
+                        detalle.Descuento = 0;
+                        detalle.Precio = producto.Precio;
+                        detalle.PedidoId = pedidoActual.Id;
 
-                    pedidoActual.Detalles.Add(detalle);
+                        pedidoActual.Detalles.Add(detalle);
 
-                    _context.Detalles.Add(detalle);
+                        _context.Detalles.Add(detalle);
+                    }
                 }
                 else
                 {

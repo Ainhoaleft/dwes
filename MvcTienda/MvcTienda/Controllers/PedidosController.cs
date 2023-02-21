@@ -48,7 +48,7 @@ namespace MvcTienda.Controllers
 
             pedidos = pedidos.Include(a => a.Cliente) 
                              .Include(a => a.Estado);
-            int pageSize = 3;
+            int pageSize = 5;
             return View(await PaginatedList<Pedido>.CreateAsync(pedidos.AsNoTracking(),
                               pageNumber ?? 1, pageSize));
             //return View(await pedidos.AsNoTracking().ToListAsync());

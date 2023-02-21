@@ -23,15 +23,32 @@ namespace MvcTienda.Controllers
         }
 
         // GET: Clientes
-        public async Task<IActionResult> Index(int? pageNumber)
+        public async Task<IActionResult> Index(int? pageNumber, string strCadenaBusqueda, string busquedaActual)
         {
+
+            if (strCadenaBusqueda != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                strCadenaBusqueda = busquedaActual;
+            }
+            ViewData["BusquedaActual"] = strCadenaBusqueda;
             // Cargar datos de Empleados
             var clientes = from s in _context.Clientes
                             select s;
-            int pageSize = 3;
+            int pageSize = 5;  
+            // Para buscar avisos por nombre de empleado en la lista de valores
+            if (!String.IsNullOrEmpty(strCadenaBusqueda))
+            {
+                clientes = clientes.Where(s => s.Nombre.Contains(strCadenaBusqueda));
+            }
             return View(await PaginatedList<Cliente>.CreateAsync(clientes.AsNoTracking(),
             pageNumber ?? 1, pageSize));
 
+          
+            
             //return View(await _context.Clientes.ToListAsync());
         }
 

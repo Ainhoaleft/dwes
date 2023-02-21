@@ -24,7 +24,7 @@ namespace MvcTienda.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult>
-        Create([Bind("Id,Nombre,Email,Telefono,FechaNacimiento")] Cliente cliente)
+        Create([Bind("Id,Nombre,Email,Telefono,Direccion,Poblacion,CodigoPostal,Nif")] Cliente cliente)
         {
             // Asignar el Email del usuario actuals
             cliente.Email = User.Identity.Name;
@@ -54,7 +54,7 @@ namespace MvcTienda.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id,
-        [Bind("Id,Nombre,Email,Telefono,FechaNacimiento")] Cliente cliente)
+        [Bind("Id,Nombre,Email,Telefono,Direccion,Poblacion,CodigoPostal,Nif")] Cliente cliente)
         {
             if (id != cliente.Id)
             {

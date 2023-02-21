@@ -117,9 +117,16 @@
                                         <a asp-action="MenosCantidad" asp-controller="Carrito" asp-route-id="@detalle.Id" class="btn btn-primary"> - </a>
                                 }
                             }
-                            <label>@detalle.Cantidad</label>
-                                <a asp-action="MasCantidad" asp-controller="Carrito" asp-route-id="@detalle.Id" class="btn btn-primary"> + </a>
-                        </td>
+                                @Html.DisplayFor(modelItem => detalle.Cantidad)
+
+                    @if (detalle.Producto.Stock == detalle.Cantidad)
+                    {
+                        <a asp-action="MasCantidad" asp-controller="Carrito" asp-route-id="@detalle.Id" class="btn btn-primary" hidden>+</a>
+                    }
+                    else
+                    {
+                        <a asp-action="MasCantidad" asp-controller="Carrito" asp-route-id="@detalle.Id" class="btn btn-primary">+</a>
+                    }</td>
                         <td>@detalle.Precio</td>
                         <td>@detalle.Descuento</td>
                             <td>@total.ToString("C")</td>
